@@ -11,7 +11,7 @@ class TodosController extends Controller
     public function index(){
 
 
-        $todos =Todo::orderBy('id', 'desc')->paginate(10);
+        $todos =Todo::orderBy('id')->paginate(10);
         return view('todos.index') -> with('todos', $todos);
 
         // return view('todos.index') -> with('todos', Todo::all());

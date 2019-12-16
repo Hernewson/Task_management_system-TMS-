@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\UserController;
+
 Route::GET( 'todos/{todo}/delete', 'TodosController@destroy' );
 
 Route::POST( 'todos/{todo}/update-todos', 'TodosController@update' );
@@ -25,6 +27,12 @@ Route::get('todos','TodosController@index');
 Route::get('/','PageController@index');
 
 
+
+
+//User Routes
+Route::match(['get', 'post'], '/add/user', 'UserController@addUser')->name('addUser');
+Route::get('/users/view', 'UserController@viewAllUsers')->name('viewAllUsers');
+Route::match(['get', 'post'], '/edit/user/{id}', 'UserController@editUser')->name('editUser');
 
 
 // Route::get('/', function () {

@@ -53,11 +53,8 @@
                 @foreach ($todos as $todo)
                 <li class="list-group-item">
                     <a href="/todos/{{ $todo->id }}">{{ $todo -> title }}</a>
-                    <a href="/todos/{{ $todo->id }}/edit" class="btn btn-info btn-sm float-right">Edit</a>
-                    <a href="/todos/{{ $todo->id }}/delete" class="btn btn-danger btn-sm float-left"
-                        style="padding:5px;">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                    </a>
+                    <a href="/todos/{{ $todo->id }}/delete" class="btn btn-danger btn-sm float-right">Delete</a>
+                     <a href="/todos/{{ $todo->id }}/edit" class="btn btn-info btn-sm float-right">Edit</a>
 
                     {{-- <a href="/todos/{{ $todo->id }}" class="btn button-primary btn-sm float-right">View</a> --}}
 

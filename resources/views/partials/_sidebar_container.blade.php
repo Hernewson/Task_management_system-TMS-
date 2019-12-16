@@ -71,6 +71,26 @@
                                 </li> --}}
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a href="/" class="nav-link nav-toggle"> <i class="material-icons">event</i>
+                        <span class="title">Users</span><span class="arrow"></span>
+                    </a>
+                     <ul class="sub-menu">
+                        <li class="nav-item ">
+                            <a href="/users/view" class="nav-link nav-toggle">
+                                <span class="title">All Users</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/add/user" class="nav-link ">
+                                <span class="title">Create New User</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </li>
                 {{-- <li class="nav-item">
                         <a href="index.html#" class="nav-link nav-toggle"> <i class="material-icons">person</i>
                             <span class="title">Professors</span> <span class="arrow"></span>
