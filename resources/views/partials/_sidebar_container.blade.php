@@ -56,7 +56,7 @@
                         <li class="nav-item ">
                             <a href="/todos" class="nav-link nav-toggle">
                                 <span class="title">All tasks</span>
-                                <span class="selected"></span>
+                                {{-- <span class="selected"></span> --}}
                             </a>
                         </li>
                         <li class="nav-item ">
@@ -64,11 +64,11 @@
                                 <span class="title">Create task</span>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                                    <a href="dashboard3.html" class="nav-link ">
-                                        <span class="title">Dashboard 3</span>
-                                    </a>
-                                </li> --}}
+                        <li class="nav-item">
+                            <a href="/completed" class="nav-link ">
+                                <span class="title">Completed Tasks</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 {{-- <li class="nav-item">

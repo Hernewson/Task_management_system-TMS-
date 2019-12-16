@@ -18,7 +18,7 @@
                         <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href=" / ">Home</a>&nbsp;<i
                                 class="fa fa-angle-right"></i>
                         </li>
-                        <li class="active">Todo</li>
+                        <li class="active">edit task</li>
                     </ol>
                 </div>
             </div>

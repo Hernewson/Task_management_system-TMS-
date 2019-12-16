@@ -80,4 +80,28 @@ class TodosController extends Controller
 
         return \redirect('/todos');
     }
+
+    public function complete(Todo $todo){
+        $todo -> completed = true;
+        $todo -> save();
+
+        session()->flash('complete', 'This Task is completed');
+        return \redirect('/todos');
+    }
+
+    public function completed(){
+
+        $todos =Todo::orderBy('id', 'desc')->paginate(10);
+        return \view('todos.completed')->with('todos', $todos);
+
+    }
+
+    public function rollback(Todo $todo){
+        $todo -> completed = false;
+        $todo -> save();
+
+        session()->flash('rollback', 'This Task is undone.');
+        return \redirect('/completed');
+
+    }
 }

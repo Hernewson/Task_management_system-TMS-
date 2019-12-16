@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::GET('todos/{todo}/rollback', 'TodosController@rollback');
+
+Route::GET('completed', 'TodosController@completed');
+
+Route::GET('todos/{todo}/complete', 'TodosController@complete');
 
 Route::GET( 'todos/{todo}/delete', 'TodosController@destroy' );
 
