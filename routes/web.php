@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages/index');
-});
+Route::GET( 'todos/{todo}/delete', 'TodosController@destroy' );
+
+Route::POST( 'todos/{todo}/update-todos', 'TodosController@update' );
+Route::get( 'todos/{todo}/edit', 'TodosController@edit' );
+
+Route::post('create-todos','TodosController@store');
+Route::get('new-todos','TodosController@create');
+
+Route::get('todos/{todo}', 'TodosController@show');
+Route::get('todos','TodosController@index');
+
+Route::get('/','PageController@index');
+
+
+
+
+// Route::get('/', function () {
+//     return view('pages/index');
+// });
+
