@@ -76,8 +76,7 @@
                                                 </div>
                                             </div>
                                             <div class="table-scrollable">
-                                                <table
-                                                        class="table table-striped table-bordered table-hover table-checkable order-column valign-middle"
+                                                <table class="table table-striped table-bordered table-hover table-checkable order-column valign-middle"
                                                         id="example4">
                                                     <thead>
                                                     <tr>
@@ -90,8 +89,8 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($user as $users)
-                                                    <tr class="odd gradeX">
+                                                    @foreach($users as $key=>$user)
+                                                    <tr>
                                                         {{-- <td class="patient-img">
                                                             @if(!empty($users->image))
                                                             <img src="{{ asset('public/uploads/profile/'.$users->image) }}"
@@ -101,45 +100,46 @@
                                                                      alt="{{ $users->name }}">
                                                             @endif
                                                         </td> --}}
-                                                        <td class="left"> {{ $loop->index +1 }}</td>
-                                                        <td>{{ $users->name }}</td>
+                                                        <td>{{ $key+1 }}</td>
+                                                        <td>{{ $user->name }}</td>
 
                                                         <td>
-                                                            @if(!empty($users->phone))
+                                                            @if(!empty($user->phone))
 
-                                                                    {{ $users->phone }}
+                                                                    {{ $user->phone }}
                                                                 @else
                                                                 Not Available
                                                             @endif
                                                         </td>
-                                                        <td>{{ $users->email }} </td>
+                                                        <td>{{ $user->email }} </td>
                                                         <td class="left">
-                                                            @if(!empty($users->address))
-                                                                {{ $users->address }}
+                                                            @if(!empty($user->address))
+                                                                {{ $user->address }}
                                                             @else
                                                                 Not Available
                                                             @endif
                                                         </td>
-                                                        {{-- <td>
+                                                        <td>
                                                             <a href="{{ route('editUser', $user->id) }}"
                                                                class="btn btn-primary btn-xs">
                                                                 <i class="fa fa-pencil"></i>
                                                             </a>
-                                                            @if($user->id == auth()->user()->id)
+                                                            {{-- @if($user->id == auth()->user()->id)
                                                             <button href="javascript:" rel="{{ $user->id }}" rel1="trash-user" class="btn btn-danger btn-xs deleteRecord" disabled="disabled">
                                                                 <i class="fa fa-trash-o "></i>
                                                             </button>
-                                                                @else
-                                                            <a href="javascript:" rel="{{ $user->id }}" rel1="trash-user" class="btn btn-danger btn-xs deleteRecord">
-                                                                <i class="fa fa-trash-o "></i>
-                                                            </a>
-                                                                @endif
+                                                                @else --}}
+                                                                <a href="{{ route('deleteUser', $user->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                                                {{-- @endif --}}
 
-                                                        </td> --}}
+                                                        </td>
                                                     </tr>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                <div>
+                                                    {{$users->links()}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -161,4 +161,51 @@
 
 </div>
 <!-- end page container -->
+@endsection
+
+@section('css')
+<!-- data tables -->
+<link href="{{ asset('public/adminAssets/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+@endsection
+
+@section('scripts')
+<!-- data tables -->
+<script src="{{ asset('public/adminAssets/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('public/adminAssets/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('public/adminAssets/assets/js/pages/table/table_data.js') }}"></script>
+
+
+<script src="{{ asset('public/adminAssets/assets/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('public/adminAssets/assets/js/jquery.sweet-alert.custom.js') }}"></script>
+{{-- <script type="text/javascript">
+    @if(session('flash_message'))
+    swal("Success!", "{!! session('flash_message') !!}", "success")
+    @endif
+
+    @if(session('flash_error'))
+    swal("Error", "{!! session('flash_error') !!}")
+    @endif
+</script> --}}
+
+{{-- <script>
+    $(".deleteServiceEnquiryRecord").click(function () {
+        var id = $(this).attr('rel');
+        var deleteFunction = $(this).attr('rel1');
+        swal({
+                title: "Are You Sure? ",
+                text: "You will not be able to recover this record again",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, Delete it!"
+            },
+            function () {
+
+                window.location.href = "http://localhost/" + deleteFunction + "/" + id;
+            });
+    });
+
+</script> --}}
+
+
 @endsection

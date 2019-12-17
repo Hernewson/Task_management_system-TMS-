@@ -43,3 +43,24 @@
 <link href="{{ asset('assets/css/theme/light/theme-color.css')}}" rel="stylesheet" type="text/css" />
 <!-- favicon -->
 <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico')}} " />
+
+<!-- Sweet Alert -->
+    <link rel="stylesheet" href="{{ asset('public/adminAssets/assets/css/sweetalert.css') }}">
+    <style>
+        span.form-error{
+            color: red !important;
+        }
+        input.error::placeholder{
+            color: red !important;
+        }
+        span.input-group-text{
+            background-color: #335D98 !important;
+            color: #fff !important;
+        }
+        #logoSite img,
+        #favicon img{
+            border: 1px solid grey !important;
+            padding: 10px !important;
+        }
+    </style>
+    @yield('css')

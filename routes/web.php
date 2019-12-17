@@ -13,29 +13,29 @@
 
 use App\Http\Controllers\UserController;
 
-Route::GET( 'todos/{todo}/delete', 'TodosController@destroy' );
+Route::GET('todos/{todo}/delete', 'TodosController@destroy');
 
-Route::POST( 'todos/{todo}/update-todos', 'TodosController@update' );
-Route::get( 'todos/{todo}/edit', 'TodosController@edit' );
+Route::POST('todos/{todo}/update-todos', 'TodosController@update');
+Route::get('todos/{todo}/edit', 'TodosController@edit');
 
-Route::post('create-todos','TodosController@store');
-Route::get('new-todos','TodosController@create');
+Route::post('create-todos', 'TodosController@store');
+Route::get('new-todos', 'TodosController@create');
 
 Route::get('todos/{todo}', 'TodosController@show');
-Route::get('todos','TodosController@index');
+Route::get('todos', 'TodosController@index');
 
-Route::get('/','PageController@index');
+Route::get('/', 'PageController@index');
 
 
 
 
 //User Routes
-Route::match(['get', 'post'], '/add/user', 'UserController@addUser')->name('addUser');
-Route::get('/users/view', 'UserController@viewAllUsers')->name('viewAllUsers');
-Route::match(['get', 'post'], '/edit/user/{id}', 'UserController@editUser')->name('editUser');
+Route::match(['get', 'post'], '/add-user', 'UserController@addUser')->name('addUser');
+Route::get('/view-users', 'UserController@viewAllUsers')->name('viewAllUsers');
+Route::match(['get', 'post'], '/edit-user/{id}', 'UserController@editUser')->name('editUser');
+Route::get('delete-user/{id}', 'UserController@deleteUser')->name('deleteUser');
 
 
 // Route::get('/', function () {
 //     return view('pages/index');
 // });
-

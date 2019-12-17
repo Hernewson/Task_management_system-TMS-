@@ -78,13 +78,13 @@
                     </a>
                      <ul class="sub-menu">
                         <li class="nav-item ">
-                            <a href="/users/view" class="nav-link nav-toggle">
+                            <a href="/view-users" class="nav-link nav-toggle">
                                 <span class="title">All Users</span>
                                 <span class="selected"></span>
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="/add/user" class="nav-link ">
+                            <a href="/add-user" class="nav-link ">
                                 <span class="title">Create New User</span>
                             </a>
                         </li>

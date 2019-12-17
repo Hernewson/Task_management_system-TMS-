@@ -6,7 +6,10 @@
 <!-- Custom js -->
 <script src="js/custom.js"></script>
 
-
+    {{-- jQuery Form Validator --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script src="{{ asset('public/adminAssets/assets/js/sweetalert.min.js')}}"></script>
+    <script src="{{ asset('public/adminAssets/assets/js/jquery.sweet-alert.custom.js')}}"></script>
 
 	<!-- start js include path -->
 	<script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
