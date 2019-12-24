@@ -10,6 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//  Clients controller starts from here
+Route::resource('clients','ClientsController');
+
+//  Clients controller starts from here
+
+
+//  Todo controller starts from here
+
 Route::GET('todos/{todo}/rollback', 'TodosController@rollback');
 
 Route::GET('completed', 'TodosController@completed');
@@ -27,12 +36,21 @@ Route::get('new-todos','TodosController@create');
 Route::get('todos/{todo}', 'TodosController@show');
 Route::get('todos','TodosController@index');
 
-Route::get('/','PageController@index');
+//  Todo controller ends from here
 
 
+//  Page controller starts from here
+
+Route::GET('/admin','PageController@index')->name('admin');
+
+//  Page controller starts from here
 
 
-// Route::get('/', function () {
-//     return view('pages/index');
-// });
+Route::get('/', function () {
+    return view('register');
+});
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

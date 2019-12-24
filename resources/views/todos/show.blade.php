@@ -15,7 +15,7 @@
                         <div class="page-title">Task No. {{$todo->id}}</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href=" / ">Home</a>&nbsp;<i
+                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href=" /admin ">Home</a>&nbsp;<i
                                 class="fa fa-angle-right"></i>
                         </li>
                         <li class="active">View task</li>

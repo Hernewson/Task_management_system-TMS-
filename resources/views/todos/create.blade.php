@@ -15,7 +15,7 @@
                         <div class="page-title">Create Task </div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href=" / ">Home</a>&nbsp;<i
+                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href=" /admin ">Home</a>&nbsp;<i
                                 class="fa fa-angle-right"></i>
                         </li>
                         <li class="active">Create task</li>
@@ -53,7 +53,7 @@
                                         placeholder="Enter your task here" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" name="description" id="desciption" cols="30"
+                                    <textarea class="form-control" name="description" id="description" cols="30"
                                         rows="10" placeholder="Enter your task description here"></textarea>
                                 </div>
                                 <div class="form-group text-center">
