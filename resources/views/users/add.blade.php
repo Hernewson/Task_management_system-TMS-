@@ -4,11 +4,7 @@
 @endsection
 
 @section('content')
-<!-- start page container -->
-    <div class="page-container">
-        <!-- start page content -->
-        <div class="page-content-wrapper">
-            <div class="page-content">
+    <div class="page-content">
                 <div class="page-bar">
 
                     <div class="page-title-breadcrumb">
@@ -134,8 +130,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
 
    @endsection
 
@@ -166,8 +161,8 @@
     // });
 </script>
 
-<script src="{{ asset('public/adminAssets/assets/js/sweetalert.min.js') }}"></script>
-<script src="{{ asset('public/adminAssets/assets/js/jquery.sweet-alert.custom.js') }}"></script>
+<script src="{{ asset('public/assets/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/jquery.sweet-alert.custom.js') }}"></script>
 
 
    @endsection

@@ -34,10 +34,10 @@
                 <!-- start language menu -->
                 <li class="dropdown language-switch">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img
-                            src="../assets/img/flags/gb.png" class="position-left" alt=""> English <span
-                            class="fa fa-angle-down"></span>
+                            src="../assets/img/flags/gb.png" class="position-left" alt=""> English <!-- <span
+                            class="fa fa-angle-down"></span> -->
                     </a>
-                    <ul class="dropdown-menu">
+                   <!--  <ul class="dropdown-menu">
                         <li>
                             <a class="deutsch"><img src="../assets/img/flags/de.png" alt=""> Deutsch</a>
                         </li>
@@ -53,7 +53,7 @@
                         <li>
                             <a class="russian"><img src="../assets/img/flags/ru.png" alt=""> Русский</a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </li>
                 <!-- end language menu -->
                 <!-- start notification dropdown -->
@@ -80,40 +80,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;">
-                                        <span class="time">3 mins</span>
-                                        <span class="details">
-                                            <span class="notification-icon circle purple-bgcolor"><i
-                                                    class="fa fa-user o"></i></span>
-                                            <b>John Micle </b>is now following you. </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="time">7 mins</span>
-                                        <span class="details">
-                                            <span class="notification-icon circle blue-bgcolor"><i
-                                                    class="fa fa-comments-o"></i></span>
-                                            <b>Sneha Jogi </b>sent you a message. </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="time">12 mins</span>
-                                        <span class="details">
-                                            <span class="notification-icon circle pink"><i
-                                                    class="fa fa-heart"></i></span>
-                                            <b>Ravi Patel </b>like your photo. </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="time">15 mins</span>
-                                        <span class="details">
-                                            <span class="notification-icon circle yellow"><i
-                                                    class="fa fa-warning"></i></span> Warning! </span>
-                                    </a>
-                                </li>
+                                
                                 <li>
                                     <a href="javascript:;">
                                         <span class="time">10 hrs</span>
@@ -156,56 +123,7 @@
                                         <span class="message"> Jatin I found you on LinkedIn... </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="index.html#">
-                                        <span class="photo">
-                                            <img src="../assets/img/prof/prof3.jpg" class="img-circle" alt="">
-                                        </span>
-                                        <span class="subject">
-                                            <span class="from"> John Deo </span>
-                                            <span class="time">16 mins </span>
-                                        </span>
-                                        <span class="message"> Fwd: Important Notice Regarding Your Domain
-                                            Name... </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index.html#">
-                                        <span class="photo">
-                                            <img src="../assets/img/prof/prof1.jpg" class="img-circle" alt="">
-                                        </span>
-                                        <span class="subject">
-                                            <span class="from"> Rajesh </span>
-                                            <span class="time">2 hrs </span>
-                                        </span>
-                                        <span class="message"> pls take a print of attachments. </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index.html#">
-                                        <span class="photo">
-                                            <img src="../assets/img/prof/prof8.jpg" class="img-circle" alt="">
-                                        </span>
-                                        <span class="subject">
-                                            <span class="from"> Lina Smith </span>
-                                            <span class="time">40 mins </span>
-                                        </span>
-                                        <span class="message"> Apply for Ortho Surgeon </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index.html#">
-                                        <span class="photo">
-                                            <img src="../assets/img/prof/prof5.jpg" class="img-circle" alt="">
-                                        </span>
-                                        <span class="subject">
-                                            <span class="from"> Jacob Ryan </span>
-                                            <span class="time">46 mins </span>
-                                        </span>
-                                        <span class="message"> Request for leave application. </span>
-                                    </a>
-                                </li>
-                            </ul>
+                                                            </ul>
                             <div class="dropdown-menu-footer">
                                 <a href="index.html#"> All Messages </a>
                             </div>

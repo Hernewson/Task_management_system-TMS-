@@ -49,14 +49,14 @@
                         </ul> --}}
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link nav-toggle"> <i class="material-icons">event</i>
+                    <a  class="nav-link nav-toggle"> <i class="material-icons">event</i>
                         <span class="title">Task Management</span><span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item ">
                             <a href="/todos" class="nav-link nav-toggle">
                                 <span class="title">All tasks</span>
-                                <span class="selected"></span>
+                                {{-- <span class="selected"></span> --}}
                             </a>
                         </li>
                         <li class="nav-item ">
@@ -64,27 +64,27 @@
                                 <span class="title">Create task</span>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                                    <a href="dashboard3.html" class="nav-link ">
-                                        <span class="title">Dashboard 3</span>
-                                    </a>
-                                </li> --}}
+                        <li class="nav-item">
+                            <a href="/completed" class="nav-link ">
+                                <span class="title">Completed Tasks</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/" class="nav-link nav-toggle"> <i class="material-icons">event</i>
+                    <a  class="nav-link nav-toggle"> <i class="material-icons">event</i>
                         <span class="title">Users</span><span class="arrow"></span>
                     </a>
                      <ul class="sub-menu">
                         <li class="nav-item ">
-                            <a href="/view-users" class="nav-link nav-toggle">
+                            <a href="{{route('viewAllUsers')}}" class="nav-link nav-toggle">
                                 <span class="title">All Users</span>
                                 <span class="selected"></span>
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="/add-user" class="nav-link ">
+                            <a href="{{route('addUser')}}" class="nav-link ">
                                 <span class="title">Create New User</span>
                             </a>
                         </li>

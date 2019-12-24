@@ -35,19 +35,19 @@ class UserController extends Controller
             $users->phone = $data['phone'];
             $users->password = $data['password'];
 
-            $random = str_random(20);
-            if ($request->hasFile('image')) {
-                $image_tmp = Input::file('image');
-                if ($image_tmp->isValid()) {
-                    $extension = $image_tmp->getClientOriginalExtension();
-                    $filename = $random . '.' . $extension;
-                    $image_path = 'public/uploads/profile/' . $filename;
-                    // Resize Image Code
-                    Image::make($image_tmp)->save($image_path);
-                    // Store image name in products table
-                    $users->image = $filename;
-                }
-            }
+            // $random = str_random(20);
+            // if ($request->hasFile('image')) {
+            //     $image_tmp = Input::file('image');
+            //     if ($image_tmp->isValid()) {
+            //         $extension = $image_tmp->getClientOriginalExtension();
+            //         $filename = $random . '.' . $extension;
+            //         $image_path = 'public/uploads/profile/' . $filename;
+            //         // Resize Image Code
+            //         Image::make($image_tmp)->save($image_path);
+            //         // Store image name in products table
+            //         $users->image = $filename;
+            //     }
+            // }
 
             $users->save();
 
@@ -60,7 +60,8 @@ class UserController extends Controller
     // View All Users
     public function viewAllUsers()
     {
-        $users = User::latest()->paginate(10);
+        // dd('hello');
+        $users = User::all();
         return view('users.show', compact('users'));
     }
 

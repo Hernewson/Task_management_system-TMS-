@@ -11,18 +11,25 @@
     <div class="page-wrapper">
 
         @include('partials/_header')
-        @include('partials/_sidebar_container')
 
+        <div class="page-container">
+            <!-- start sidebar menu -->
+            @include('partials/_sidebar_container')
+            <!-- end sidebar menu -->
+                <!-- start page content -->
 
-
-        @yield('content')
+                <div class="page-content-wrapper">
+                    @yield('content')
+                </div>
+                <!-- end page content -->
+        </div>
+    </div>
 
         @include('partials/_footer')
 
-
         @include('partials/_scripts')
 
-    </div>
+
 
 </body>
 

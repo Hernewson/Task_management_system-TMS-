@@ -45,7 +45,7 @@
 <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico')}} " />
 
 <!-- Sweet Alert -->
-    <link rel="stylesheet" href="{{ asset('public/adminAssets/assets/css/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminAssets/assets/css/sweetalert.css')}}" type="text/css" />
     <style>
         span.form-error{
             color: red !important;
@@ -63,4 +63,8 @@
             padding: 10px !important;
         }
     </style>
+
+    <!-- data tables -->
+    <link href="{{ asset('assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css')}}" rel="stylesheet"
+        type="text/css" />
     @yield('css')
