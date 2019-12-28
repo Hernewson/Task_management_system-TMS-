@@ -16,18 +16,18 @@
             <!-- start sidebar menu -->
             @include('partials/_sidebar_container')
             <!-- end sidebar menu -->
-                <!-- start page content -->
+            <!-- start page content -->
 
-                <div class="page-content-wrapper">
-                    @yield('content')
-                </div>
-                <!-- end page content -->
+            <div class="page-content-wrapper" style="margin-top:-39px;">
+                @yield('content')
+            </div>
+            <!-- end page content -->
         </div>
     </div>
 
-        @include('partials/_footer')
+    @include('partials/_footer')
 
-        @include('partials/_scripts')
+    @include('partials/_scripts')
 
 
 
