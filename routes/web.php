@@ -25,16 +25,19 @@ Route::GET('completed', 'TodosController@completed');
 
 Route::GET('todos/{todo}/complete', 'TodosController@complete');
 
-Route::GET( 'todos/{todo}/delete', 'TodosController@destroy' );
 
-Route::POST( 'todos/{todo}/update-todos', 'TodosController@update' );
-Route::get( 'todos/{todo}/edit', 'TodosController@edit' );
+Route::GET('todos/{todo}/delete', 'TodosController@destroy');
 
-Route::post('create-todos','TodosController@store');
-Route::get('new-todos','TodosController@create');
+Route::POST('todos/{todo}/update-todos', 'TodosController@update');
+Route::get('todos/{todo}/edit', 'TodosController@edit');
+
+Route::post('create-todos', 'TodosController@store');
+Route::get('new-todos', 'TodosController@create');
 
 Route::get('todos/{todo}', 'TodosController@show');
-Route::get('todos','TodosController@index');
+Route::get('todos', 'TodosController@index');
+
+Route::get('/', 'PageController@index');
 
 //  Todo controller ends from here
 
@@ -49,6 +52,12 @@ Route::GET('/admin','PageController@index')->name('admin');
 Route::get('/', function () {
     return view('register');
 });
+
+//User Routes
+Route::match(['get', 'post'], '/add-user', 'UserController@addUser')->name('addUser');
+Route::get('/view-users', 'UserController@viewAllUsers')->name('viewAllUsers');
+Route::match(['get', 'post'], '/edit-user/{id}', 'UserController@editUser')->name('editUser');
+Route::get('delete-user/{id}', 'UserController@deleteUser')->name('deleteUser');
 
 
 Auth::routes();

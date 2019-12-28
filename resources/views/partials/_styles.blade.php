@@ -46,3 +46,28 @@
 
 <!-- favicon -->
 <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico')}} " />
+
+<!-- Sweet Alert -->
+    <link rel="stylesheet" href="{{ asset('adminAssets/assets/css/sweetalert.css')}}" type="text/css" />
+    <style>
+        span.form-error{
+            color: red !important;
+        }
+        input.error::placeholder{
+            color: red !important;
+        }
+        span.input-group-text{
+            background-color: #335D98 !important;
+            color: #fff !important;
+        }
+        #logoSite img,
+        #favicon img{
+            border: 1px solid grey !important;
+            padding: 10px !important;
+        }
+    </style>
+
+    <!-- data tables -->
+    <link href="{{ asset('assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css')}}" rel="stylesheet"
+        type="text/css" />
+    @yield('css')
