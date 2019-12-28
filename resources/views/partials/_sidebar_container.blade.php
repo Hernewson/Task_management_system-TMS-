@@ -75,7 +75,6 @@
                 </li>
                 {{-- Task management ends here --}}
 
-
                 {{-- Clients management starts here --}}
                 <li class="nav-item">
                     <a href="/" class="nav-link nav-toggle"> <i class="material-icons">person</i>
@@ -99,7 +98,33 @@
                         </li>
                     </ul>
                 </li>
-                {{-- Task management ends here --}}
+                {{-- Clients management ends here --}}
+
+
+                {{-- Users management starts here --}}
+                <li class="nav-item">
+                    <a href="/" class="nav-link nav-toggle"> <i class="material-icons">person</i>
+                        <span class="title">Users</span> <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="/clients" class="nav-link "> <span class="title">All
+                                    Users</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/add-user" class="nav-link "> <span class="title">Add
+                                    User</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link "> <span class="title">Trashed
+                                    Users</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- Users management ends here --}}
 
 
             </ul>

@@ -18,7 +18,7 @@
             <!-- end sidebar menu -->
             <!-- start page content -->
 
-            <div class="page-content-wrapper" style="margin-top:-39px;">
+            <div class="page-content-wrapper" style="    margin-top: -39px;">
                 @yield('content')
             </div>
             <!-- end page content -->
