@@ -23,7 +23,7 @@
                     </div>
                 </li>
                 <li class="nav-item start">
-                    <a href="/admin" class="nav-link nav-toggle">
+                    <a href="/home" class="nav-link nav-toggle">
                         <i class="material-icons">dashboard</i>
                         <span class="title">Dashboard</span>
                         <span class="selected"></span>
@@ -101,6 +101,7 @@
                 {{-- Clients management ends here --}}
 
 
+                @if (auth()->user()->isAdmin())
                 {{-- Users management starts here --}}
                 <li class="nav-item">
                     <a href="/" class="nav-link nav-toggle"> <i class="material-icons">person</i>
@@ -108,7 +109,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
-                            <a href="/clients" class="nav-link "> <span class="title">All
+                            <a href="/view-users" class="nav-link "> <span class="title">All
                                     Users</span>
                             </a>
                         </li>
@@ -125,6 +126,7 @@
                     </ul>
                 </li>
                 {{-- Users management ends here --}}
+                @endif
 
 
             </ul>

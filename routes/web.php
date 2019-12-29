@@ -44,7 +44,7 @@ Route::get('/', 'PageController@index');
 
 //  Page controller starts from here
 
-Route::GET('/admin','PageController@index')->name('admin');
+// Route::GET('/admin','PageController@index')->name('admin');
 
 //  Page controller starts from here
 
@@ -55,7 +55,10 @@ Route::get('/', function () {
 
 //User Routes
 Route::match(['get', 'post'], '/add-user', 'UserController@addUser')->name('addUser');
-Route::get('/view-users', 'UserController@viewAllUsers')->name('viewAllUsers');
+// Route::get('/view-users', 'UserController@viewAllUsers')->name('viewAllUsers');
+Route::middleware(['auth', 'admin'])->group(function(){
+    Route::get('/view-users', 'UserController@viewAllUsers')->name('viewAllUsers');
+});
 Route::match(['get', 'post'], '/edit-user/{id}', 'UserController@editUser')->name('editUser');
 Route::get('delete-user/{id}', 'UserController@deleteUser')->name('deleteUser');
 

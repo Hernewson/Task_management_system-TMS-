@@ -3,13 +3,13 @@
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
-            <a href="/admin">
+            <a href="/home">
                 <span class="logo-icon material-icons fa-rotate-45">school</span>
                 <span class="logo-default">GCN</span> </a>
         </div>
         <!-- logo end -->
         <ul class="nav navbar-nav navbar-left in">
-            <li><a href="index.html#" class="menu-toggler sidebar-toggler"><i class="icon-menu"></i></a></li>
+            <li><a class="menu-toggler sidebar-toggler"><i class="icon-menu"></i></a></li>
         </ul>
         <form class="search-form-opened" action="#" method="GET">
             <div class="input-group">
@@ -34,10 +34,11 @@
                 <!-- start language menu -->
                 <li class="dropdown language-switch">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img
-                            src="../assets/img/flags/gb.png" class="position-left" alt=""> English <!-- <span
+                            src="../assets/img/flags/gb.png" class="position-left" alt=""> English
+                        <!-- <span
                             class="fa fa-angle-down"></span> -->
                     </a>
-                   <!--  <ul class="dropdown-menu">
+                    <!--  <ul class="dropdown-menu">
                         <li>
                             <a class="deutsch"><img src="../assets/img/flags/de.png" alt=""> Deutsch</a>
                         </li>
@@ -80,7 +81,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                
+
                                 <li>
                                     <a href="javascript:;">
                                         <span class="time">10 hrs</span>
@@ -123,7 +124,7 @@
                                         <span class="message"> Jatin I found you on LinkedIn... </span>
                                     </a>
                                 </li>
-                                                            </ul>
+                            </ul>
                             <div class="dropdown-menu-footer">
                                 <a href="index.html#"> All Messages </a>
                             </div>
