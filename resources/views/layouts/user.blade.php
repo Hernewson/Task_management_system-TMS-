@@ -11,7 +11,7 @@
     <div class="page-wrapper">
 
         @include('partials/_header')
-        @include('partials/_sidebar_container')
+        @include('layouts/_sidebar_container')
 
 
 
