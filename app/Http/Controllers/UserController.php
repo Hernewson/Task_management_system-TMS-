@@ -65,6 +65,11 @@ class UserController extends Controller
         return view('users.show', compact('users'));
     }
 
+    //View User Profile
+    public function viewProfile()
+    {
+        return view('profile.showUser');
+    }
     // Edit User
     public function editUser(Request $request, $id)
     {
@@ -76,7 +81,8 @@ class UserController extends Controller
                 'name' => 'required',
                 'email' => 'required',
                 'address' => 'required',
-                'phone' => 'required|Max:15'
+                'phone' => 'required|Max:15',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
             if ($users_email != $request->email) {
                 $count_email = User::where('email', $request->email)->count();
@@ -96,6 +102,7 @@ class UserController extends Controller
 
             return redirect()->route('viewAllUsers');
         }
+        // return view('users.edit', compact('users', 'users_email'));
         return view('users.edit', compact('users', 'users_email'));
     }
 
