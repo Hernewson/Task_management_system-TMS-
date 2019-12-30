@@ -9,6 +9,7 @@
                         <span></span>
                     </div>
                 </li>
+
                 <li class="sidebar-user-panel">
                     <div class="user-panel">
                         <div class="pull-left image">
@@ -16,7 +17,7 @@
                                 alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p> Devraj </p>
+                            <p> <b> {{ Auth::user()->name }} </b></p>
                             <a href="index.html#"><i class="fa fa-circle user-online"></i><span class="txtOnline">
                                     Online</span></a>
                         </div>
