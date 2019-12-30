@@ -82,7 +82,7 @@ class UserController extends Controller
                 'email' => 'required',
                 'address' => 'required',
                 'phone' => 'required|Max:15',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
             if ($users_email != $request->email) {
                 $count_email = User::where('email', $request->email)->count();

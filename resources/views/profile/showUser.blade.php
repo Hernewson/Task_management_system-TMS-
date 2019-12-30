@@ -14,28 +14,38 @@
         <div class="col-lg-8 order-lg-2">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active"><strong>Profile</strong></a>
                 </li>
                 <li class="nav-item">
-                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">About Me</a>
+                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link"><strong>About Me</strong></a>
                 </li>
                 <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link"><strong>Edit</strong></a>
                 </li>
             </ul>
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
-                    <h2 class="mb-3">{{Auth::user()->name}}<span style="font-size:17px;">({{Auth::user()->name}})</span></h2>
+                    <h2 class="mb-3">{{Auth::user()->name}}<span style="font-size:17px;">({{Auth::user()->role}})</span></h2>
                     <div class="row">
                         <div class="col-md-12">
-                            <h4><i class="fa fa-envelope"></i>&nbsp; : <span>{{Auth::user()->email}}</span></h4>
-                            <h4><i class="fa fa-phone"></i>&nbsp;&nbsp; : <span>{{Auth::user()->phone}}</span></h4>
+                            <h4><i class="fa fa-envelope"></i>&nbsp; : <span><a href="mailto:{{Auth::user()->email}}">{{Auth::user()->email}}</a></span></h4>
+                            <h4><i class="fa fa-phone"></i>&nbsp;&nbsp; : <span><a href="tel:{{Auth::user()->phone}}">{{Auth::user()->phone}}</a></span></h4>
                             <h4><i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp; : <span>{{Auth::user()->address}}</span></h4>
                         </div>
                         {{-- <div class="col-md-6">
                             <h5>Recent badges</h5>
                             <a href="#" class="badge badge-dark badge-pill">html5</a>
                             <a href="#" class="badge badge-dark badge-pill">react</a>
+
+
+
+
+
+
+
+
+
+
                             <a href="#" class="badge badge-dark badge-pill">codeply</a>
                             <a href="#" class="badge badge-dark badge-pill">angularjs</a>
                             <a href="#" class="badge badge-dark badge-pill">css3</a>
