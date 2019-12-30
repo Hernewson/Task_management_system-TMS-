@@ -39,6 +39,8 @@ Route::get('/view-users', 'UserController@viewAllUsers')->name('viewAllUsers');
 Route::match(['get', 'post'], '/edit-user/{id}', 'UserController@editUser')->name('editUser');
 Route::get('delete-user/{id}', 'UserController@deleteUser')->name('deleteUser');
 
+//User Profile Route
+Route::get('/view-profile', 'UserController@viewProfile')->name('viewProfile');
 
 // Route::get('/', function () {
 //     return view('pages/index');

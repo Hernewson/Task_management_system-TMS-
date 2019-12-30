@@ -9,7 +9,7 @@
         </div>
         <!-- logo end -->
         <ul class="nav navbar-nav navbar-left in">
-            <li><a href="index.html#" class="menu-toggler sidebar-toggler"><i class="icon-menu"></i></a></li>
+            <li><a class="menu-toggler sidebar-toggler"><i class="icon-menu"></i></a></li>
         </ul>
         <form class="search-form-opened" action="#" method="GET">
             <div class="input-group">
@@ -80,7 +80,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                
+
                                 <li>
                                     <a href="javascript:;">
                                         <span class="time">10 hrs</span>
@@ -141,7 +141,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="user_profile.html">
+                            <a href="{{route('viewProfile')}}">
                                 <i class="icon-user"></i> Profile </a>
                         </li>
                         <li>
