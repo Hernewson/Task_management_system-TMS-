@@ -53,7 +53,7 @@
                                 <th> Email </th>
                                 <th>Address</th>
                                 <th>Role</th>
-                                <th> Action </th>
+                                <th style="text-align:center;"> Action </th>
                             </tr>
                         </thead>
 
@@ -79,13 +79,13 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($user->isAdmin())
-                                    <button class="btn btn-success btn-sm">Make admin</button>
+                                    {{ $user->role }}
 
-
-                                    @endif
                                 </td>
-                                <td>
+                                <td style="float:right;">
+                                    @if (!$user->isAdmin())
+                                    <button class="btn btn-success btn-sm">Make admin</button>
+                                    @endif
                                     <a href="{{ route('editUser', $user->id) }}" class="btn btn-primary btn-xs">
                                         <i class="fa fa-pencil"></i>
                                     </a>

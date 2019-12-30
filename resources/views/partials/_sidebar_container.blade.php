@@ -22,6 +22,8 @@
                         </div>
                     </div>
                 </li>
+
+                @if (auth()->user()->isAdmin())
                 <li class="nav-item start">
                     <a href="/home" class="nav-link nav-toggle">
                         <i class="material-icons">dashboard</i>
@@ -48,6 +50,8 @@
                             </li>
                         </ul> --}}
                 </li>
+
+                @endif
                 {{-- Task management starts here --}}
                 <li class="nav-item">
                     <a href="/" class="nav-link nav-toggle"> <i class="material-icons">event</i>
