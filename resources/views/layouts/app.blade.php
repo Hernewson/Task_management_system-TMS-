@@ -79,11 +79,7 @@
 
         <main class="py-4">
 
-            {{-- <div class="row">
-                <div class="col-md-4">
-                    <a href="/todos">Todo management system</a>
-                </div>
-                <div class="col-md-8"> --}}
+
             @yield('content')
 
     </div>
