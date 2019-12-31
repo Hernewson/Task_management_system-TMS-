@@ -25,11 +25,11 @@
             </ul>
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
-                    <h2 class="mb-3">{{Auth::user()->name}}<span style="font-size:17px;">({{Auth::user()->name}})</span></h2>
+                    <h2 class="mb-3">{{Auth::user()->name}}<span style="font-size:17px;">({{Auth::user()->username}})</span></h2>
                     <div class="row">
                         <div class="col-md-12">
-                            <h4><i class="fa fa-envelope"></i>&nbsp; : <span>{{Auth::user()->email}}</span></h4>
-                            <h4><i class="fa fa-phone"></i>&nbsp;&nbsp; : <span>{{Auth::user()->phone}}</span></h4>
+                            <h4><i class="fa fa-envelope"></i>&nbsp; : <span><a href="mailto:{{Auth::user()->email}}">{{Auth::user()->email}}</a></span></h4>
+                            <h4><i class="fa fa-phone"></i>&nbsp;&nbsp; : <span><a href="tel:{{Auth::user()->phone}}">{{Auth::user()->phone}}</a></span></h4>
                             <h4><i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp; : <span>{{Auth::user()->address}}</span></h4>
                         </div>
 
@@ -72,31 +72,34 @@
                     </table>
                 </div>
                 <div class="tab-pane" id="edit">
-                    <form role="form">
+                <form role="form">
+                        @method('POST')
+                        @csrf
+
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Name</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="Jane">
+                                <input class="form-control" type="text" value="{{Auth::user()->name}}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Email</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="email" value="email@gmail.com">
+                                <input class="form-control" type="email" value="{{Auth::user()->email}}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Phone</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="url" value="">
+                                <input class="form-control" type="text" value="{{Auth::user()->phone}}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Address</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="">
+                                <input class="form-control" type="text" value="{{Auth::user()->address}}">
                             </div>
                         </div>
 
@@ -104,26 +107,27 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Username</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="janeuser">
+                                <input class="form-control" type="text" value="{{Auth::user()->username}}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Password</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" value="11111122333">
+                                <input id="password" name="password" class="form-control" type="password" value="{{Auth::user()->password}}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" value="11111122333">
+                                <input id="password-confirm" name="password_confirmation" class="form-control" type="password" value="{{Auth::user()->password}}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
                                 <input type="reset" class="btn btn-secondary" value="Cancel">
-                                <input type="button" class="btn btn-primary" value="Save Changes">
+                                 <button onclick="checkUserEmail()" type="submit" class="btn btn-primary">Update
+                                            User</button>
                             </div>
                         </div>
                     </form>

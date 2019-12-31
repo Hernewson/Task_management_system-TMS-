@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -24,16 +25,19 @@ class UserController extends Controller
                 'name' => 'required',
                 'email' => 'required|unique:users',
                 'address' => 'required',
-                'phone' => 'required|Max:15'
+                'phone' => 'required|Max:15',
+                'username' => 'required|unique:users',
+                'password' => ['required', 'string', 'min:8', 'confirmed']
             ]);
 
             $data = $request->all();
             $users = new User;
             $users->name = $data['name'];
             $users->email = strtolower($data['email']);
+            $users->username = strtolower($data['username']);
             $users->address = $data['address'];
             $users->phone = $data['phone'];
-            $users->password = $data['password'];
+            $users->password = Hash::make($data['password']);
 
             // $random = str_random(20);
             // if ($request->hasFile('image')) {
@@ -82,7 +86,9 @@ class UserController extends Controller
                 'email' => 'required',
                 'address' => 'required',
                 'phone' => 'required|Max:15',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'username' => 'required',
+                'password' => ['required', 'string', 'min:8', 'confirmed']
+                // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
             if ($users_email != $request->email) {
                 $count_email = User::where('email', $request->email)->count();
@@ -96,7 +102,8 @@ class UserController extends Controller
             $users->email = strtolower($data['email']);
             $users->address = $data['address'];
             $users->phone = $data['phone'];
-            $users->password = $data['password'];
+            $users->username = strtolower($data['username']);
+            $users->password = Hash::make($data['password']);
             $users->save();
 
 
@@ -111,5 +118,44 @@ class UserController extends Controller
     {
         User::where('id', $id)->delete();
         return redirect()->back();
+    }
+
+    //Edit User Profile
+    public function editUserProfile(Request $request, $id)
+    {
+        $users = User::findOrFail($id);
+        $users_email = $users->email;
+        if ($request->isMethod('post')) {
+
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'address' => 'required',
+                'phone' => 'required|Max:15',
+                'username' => 'required',
+                'password' => ['required', 'string', 'min:8', 'confirmed']
+                // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            if ($users_email != $request->email) {
+                $count_email = User::where('email', $request->email)->count();
+                if ($count_email > 0) {
+                    return redirect()->back()->with('Email Has Been Already Taken');
+                }
+            }
+
+            $data = $request->all();
+            $users->name = $data['name'];
+            $users->email = strtolower($data['email']);
+            $users->address = $data['address'];
+            $users->phone = $data['phone'];
+            $users->username = strtolower($data['username']);
+            $users->password = Hash::make($data['password']);
+            $users->save();
+
+
+            return redirect()->route('viewProfile');
+        }
+        // return view('users.edit', compact('users', 'users_email'));
+        return view('profile.showUser', compact('users', 'users_email'));
     }
 }
