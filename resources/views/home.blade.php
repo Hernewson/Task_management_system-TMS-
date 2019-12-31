@@ -774,7 +774,10 @@ You are logged in!
 @endsection
 
 @else
-
+@extends('vendor/main')
+        @section('title')
+        <title>GCN Green Computing Nepal |Home | </title>
+        @endsection
 @section('content')
 
 <div class="page-container">

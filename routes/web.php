@@ -42,13 +42,6 @@ Route::get('/', 'PageController@index');
 //  Todo controller ends from here
 
 
-//  Page controller starts from here
-
-// Route::GET('/admin','PageController@index')->name('admin');
-
-//  Page controller starts from here
-
-
 Route::get('/', function () {
     return view('register');
 });
