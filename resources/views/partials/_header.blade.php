@@ -2,10 +2,11 @@
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
         <!-- logo start -->
-        <div class="page-logo">
+        <div class="page-logo" style="background: #000;">
             <a href="/home">
-                <span class="logo-icon material-icons fa-rotate-45">school</span>
-                <span class="logo-default">GCN</span> </a>
+                <img src="http://task.gcn.com.np/images/flarepoint_logo.png" alt=""
+                    style="height: 48px; width: 100%; object-fit: contain;">
+            </a>
         </div>
         <!-- logo end -->
         <ul class="nav navbar-nav navbar-left in">

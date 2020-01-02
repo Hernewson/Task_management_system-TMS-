@@ -10,6 +10,7 @@
                     </div>
                 </li>
 
+
                 <li class="sidebar-user-panel">
                     <div class="user-panel">
                         <div class="pull-left image">
@@ -55,7 +56,7 @@
                 @endif
                 {{-- Task management starts here --}}
                 <li class="nav-item">
-                    <a href="/" class="nav-link nav-toggle"> <i class="material-icons">event</i>
+                    <a href="/home" class="nav-link nav-toggle"> <i class="material-icons">event</i>
                         <span class="title">Tasks </span><span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -82,7 +83,7 @@
 
                 {{-- Clients management starts here --}}
                 <li class="nav-item">
-                    <a href="/" class="nav-link nav-toggle"> <i class="material-icons">person</i>
+                    <a href="/home" class="nav-link nav-toggle"> <i class="material-icons">person</i>
                         <span class="title">Clients</span> <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -109,7 +110,7 @@
                 @if (auth()->user()->isAdmin())
                 {{-- Users management starts here --}}
                 <li class="nav-item">
-                    <a href="/" class="nav-link nav-toggle"> <i class="material-icons">person</i>
+                    <a href="/home" class="nav-link nav-toggle"> <i class="material-icons">person</i>
                         <span class="title">Users</span> <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">

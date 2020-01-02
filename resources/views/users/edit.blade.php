@@ -76,14 +76,14 @@
                                     </div>
                                     {{-- <p id="emailExists" style="color: red; display: none">Email Already Exists In Our Database</p> --}}
                                 </div>
+
+
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" id="password"
-                                            value="{{$users->password}}" placeholder="Enter password "
-                                            data-validation="password" name="password">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="number" class="form-control" id="phone" value="{{$users->phone}}"
+                                            placeholder="Enter Phone Number" name="phone">
                                     </div>
-
                                 </div>
 
                                 <div class="col-md-12">
@@ -96,9 +96,25 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="phone">Phone Number</label>
-                                        <input type="number" class="form-control" id="phone" value="{{$users->phone}}"
-                                            placeholder="Enter Phone Number" name="phone">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" id="username" value="{{$users->username}}"
+                                            placeholder="Enter username" name="username">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password"
+                                            value="{{$users->password}}" placeholder="Enter password "
+                                            data-validation="password" name="password">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="password-confirm">Confirm Password</label>
+                                        <input  id="password-confirm" name="password_confirmation" class="form-control" type="password" value="{{$users->password}}">
                                     </div>
                                 </div>
 

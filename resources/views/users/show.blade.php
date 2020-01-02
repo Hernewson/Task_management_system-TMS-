@@ -1,6 +1,6 @@
 @extends('vendor/main')
 @section('title')
-<title>Todo management system </title>
+<title>User management system </title>
 @endsection
 
 @section('content')
@@ -11,6 +11,30 @@
 
         <div class="page-content">
             <div class="page-bar">
+                {{-- session message starts --}}
+                @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{session()->get('success')}}
+                </div>
+                @endif
+                @if (session()->has('complete'))
+                <div class="alert alert-success">
+                    {{session()->get('complete')}}
+                </div>
+                @endif
+
+                @if (session()->has('delete'))
+                <div class="alert alert-danger">
+                    {{session()->get('delete')}}
+                </div>
+                @endif
+
+                @if (session()->has('update'))
+                <div class="alert alert-info">
+                    {{session()->get('update')}}
+                </div>
+                @endif
+                {{-- session message ends --}}
                 <div class="page-title-breadcrumb">
                     <div class=" pull-left">
                         {{-- <div class="page-title">User No. {{$user->id}}</div> --}}

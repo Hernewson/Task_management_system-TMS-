@@ -12,7 +12,10 @@
 */
 
 //  Clients controller starts from here
-Route::resource('clients','ClientsController');
+
+use App\Http\Controllers\UserController;
+
+Route::resource('clients', 'ClientsController');
 
 //  Clients controller starts from here
 
@@ -51,14 +54,16 @@ Route::get('/', function () {
 //User Routes
 Route::match(['get', 'post'], '/add-user', 'UserController@addUser')->name('addUser');
 // Route::get('/view-users', 'UserController@viewAllUsers')->name('viewAllUsers');
-Route::middleware(['auth', 'admin'])->group(function(){
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/view-users', 'UserController@viewAllUsers')->name('viewAllUsers');
 });
 Route::match(['get', 'post'], '/edit-user/{id}', 'UserController@editUser')->name('editUser');
 Route::get('delete-user/{id}', 'UserController@deleteUser')->name('deleteUser');
 
 //User Profile Route
-Route::get('/view-profile', 'UserController@viewProfile')->name('viewProfile');
+Route::match(['get','post'],'/view-profile', 'UserController@viewProfile')->name('viewProfile');
+Route::put('/view-profile', 'UserController@update')->name('users.update-profile');
+
 
 Auth::routes();
 

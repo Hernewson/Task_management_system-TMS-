@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -24,30 +25,21 @@ class UserController extends Controller
                 'name' => 'required',
                 'email' => 'required|unique:users',
                 'address' => 'required',
-                'phone' => 'required|Max:15'
+                'phone' => 'required|Max:15',
+                'username' => 'required|unique:users',
+                'password' => ['required', 'string', 'min:8', 'confirmed']
             ]);
 
             $data = $request->all();
             $users = new User;
             $users->name = $data['name'];
             $users->email = strtolower($data['email']);
+            $users->username = strtolower($data['username']);
             $users->address = $data['address'];
             $users->phone = $data['phone'];
-            $users->password = $data['password'];
+            $users->password = Hash::make($data['password']);
 
-            // $random = str_random(20);
-            // if ($request->hasFile('image')) {
-            //     $image_tmp = Input::file('image');
-            //     if ($image_tmp->isValid()) {
-            //         $extension = $image_tmp->getClientOriginalExtension();
-            //         $filename = $random . '.' . $extension;
-            //         $image_path = 'public/uploads/profile/' . $filename;
-            //         // Resize Image Code
-            //         Image::make($image_tmp)->save($image_path);
-            //         // Store image name in products table
-            //         $users->image = $filename;
-            //     }
-            // }
+
 
             $users->save();
 
@@ -68,6 +60,7 @@ class UserController extends Controller
     //View User Profile
     public function viewProfile()
     {
+
         return view('profile.showUser');
     }
     // Edit User
@@ -82,7 +75,9 @@ class UserController extends Controller
                 'email' => 'required',
                 'address' => 'required',
                 'phone' => 'required|Max:15',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'username' => 'required',
+                'password' => ['required', 'string', 'min:8', 'confirmed']
+                // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
             if ($users_email != $request->email) {
                 $count_email = User::where('email', $request->email)->count();
@@ -96,13 +91,13 @@ class UserController extends Controller
             $users->email = strtolower($data['email']);
             $users->address = $data['address'];
             $users->phone = $data['phone'];
-            $users->password = $data['password'];
+            $users->username = strtolower($data['username']);
+            $users->password = Hash::make($data['password']);
             $users->save();
 
 
             return redirect()->route('viewAllUsers');
         }
-        // return view('users.edit', compact('users', 'users_email'));
         return view('users.edit', compact('users', 'users_email'));
     }
 
@@ -112,4 +107,34 @@ class UserController extends Controller
         User::where('id', $id)->delete();
         return redirect()->back();
     }
+
+    public function update(Request $request)
+    {
+        $user = auth()->user();
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'phone' => 'required|Max:15',
+            'username' => 'required',
+            'password' => ['required', 'string', 'min:8', 'confirmed']
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'username' => $request->username,
+            'password' => $request->password
+
+        ]);
+
+        Session()->flash('success' , 'User updated successfully');
+
+        return \redirect()->back();
+    }
+
 }

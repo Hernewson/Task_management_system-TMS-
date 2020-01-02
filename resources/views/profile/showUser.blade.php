@@ -1,99 +1,74 @@
 @extends('vendor/main')
 @section('title')
-<title>Todo management system </title>
+<title>{{Auth::user()->name}}|Profile| </title>
 @endsection
 @section('content')
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="page-content">
-            <div class="card-body">
+            <div class="card-body ">
+
                 <div class="container">
+
                     <div class="row my-2">
                         <div class="col-lg-8 order-lg-2">
+                            {{-- session message starts --}}
+                            @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{session()->get('success')}}
+                            </div>
+                            @endif
+                            @if (session()->has('complete'))
+                            <div class="alert alert-success">
+                                {{session()->get('complete')}}
+                            </div>
+                            @endif
+
+                            @if (session()->has('delete'))
+                            <div class="alert alert-danger">
+                                {{session()->get('delete')}}
+                            </div>
+                            @endif
+
+                            @if (session()->has('update'))
+                            <div class="alert alert-info">
+                                {{session()->get('update')}}
+                            </div>
+                            @endif
+                            {{-- session message ends --}}
                             <ul class="nav nav-tabs">
+
                                 <li class="nav-item">
                                     <a href="" data-target="#profile" data-toggle="tab"
                                         class="nav-link active">Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+                                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">About Me</a>
                                 </li>
+
                                 <li class="nav-item">
                                     <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
                                 </li>
                             </ul>
                             <div class="tab-content py-4">
                                 <div class="tab-pane active" id="profile">
-                                    <h5 class="mb-3">User Profile</h5>
+                                    <h2 class="mb-3">{{Auth::user()->name}}<span
+                                            style="font-size:17px;">({{Auth::user()->username}})</span></h2>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <h6>About</h6>
-                                            <p>
-                                                Web Designer, UI/UX Engineer
-                                            </p>
-                                            <h6>Hobbies</h6>
-                                            <p>
-                                                Indie music, skiing and hiking. I love the great outdoors.
-                                            </p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h6>Recent badges</h6>
-                                            <a href="#" class="badge badge-dark badge-pill">html5</a>
-                                            <a href="#" class="badge badge-dark badge-pill">react</a>
-                                            <a href="#" class="badge badge-dark badge-pill">codeply</a>
-                                            <a href="#" class="badge badge-dark badge-pill">angularjs</a>
-                                            <a href="#" class="badge badge-dark badge-pill">css3</a>
-                                            <a href="#" class="badge badge-dark badge-pill">jquery</a>
-                                            <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
-                                            <a href="#" class="badge badge-dark badge-pill">responsive-design</a>
-                                            <hr>
-                                            <span class="badge badge-primary"><i class="fa fa-user"></i> 900
-                                                Followers</span>
-                                            <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
-                                            <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
-                                        </div>
                                         <div class="col-md-12">
-                                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>
-                                                Recent
-                                                Activity</h5>
-                                            <table class="table table-sm table-hover table-striped">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>Abby</strong> joined ACME Project Team in
-                                                            <strong>`Collaboration`</strong>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>Gary</strong> deleted My Board1 in
-                                                            <strong>`Discussions`</strong>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>Kensington</strong> deleted MyBoard3 in
-                                                            <strong>`Discussions`</strong>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>John</strong> deleted My Board1 in
-                                                            <strong>`Discussions`</strong>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>Skell</strong> deleted his post Look at Why this
-                                                            is.. in
-                                                            <strong>`Discussions`</strong>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            <h4><i class="fa fa-envelope"></i>&nbsp; : <span><a
+                                                        href="mailto:{{Auth::user()->email}}">{{Auth::user()->email}}</a></span>
+                                            </h4>
+                                            <h4><i class="fa fa-phone"></i>&nbsp;&nbsp; : <span><a
+                                                        href="tel:{{Auth::user()->phone}}">{{Auth::user()->phone}}</a></span>
+                                            </h4>
+                                            <h4><i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp; :
+                                                <span>{{Auth::user()->address}}</span></h4>
                                         </div>
+
+
                                     </div>
-                                    <!--/row-->
+
                                 </div>
                                 <div class="tab-pane" id="messages">
                                     <div class="alert alert-info alert-dismissable">
@@ -105,156 +80,162 @@
                                             <tr>
                                                 <td>
                                                     <span class="float-right font-weight-bold">3 hrs ago</span> Here is
-                                                    your
-                                                    a
-                                                    link to the latest summary report from the..
+                                                    your a link to the latest summary report from the..
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <span class="float-right font-weight-bold">Yesterday</span> There
-                                                    has
-                                                    been a
-                                                    request on your account since that was..
+                                                    has been a request on your account since that was..
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <span class="float-right font-weight-bold">9/10</span> Porttitor
-                                                    vitae
-                                                    ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
+                                                    vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia
+                                                    rhoncus.
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <span class="float-right font-weight-bold">9/4</span> Vestibulum
-                                                    tincidunt
-                                                    ullamcorper eros eget luctus.
+                                                    tincidunt ullamcorper eros eget luctus.
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <span class="float-right font-weight-bold">9/4</span> Maxamillion
-                                                    ais
-                                                    the
-                                                    fix for tibulum tincidunt ullamcorper eros.
+                                                    ais the fix for tibulum tincidunt ullamcorper eros.
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane" id="edit">
-                                    <form role="form">
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">First name</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="Jane">
-                                            </div>
+                                    <div class="card-body " id="bar-parent">
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul class="list-group">
+                                                @foreach ($errors->all() as $error)
+                                                <li class="list-group-item">
+                                                    {{$error}}
+                                                </li>
+
+                                                @endforeach
+                                            </ul>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Last name</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="Bishop">
+
+
+                                        @endif
+                                        <form method="post" action=" {{route('users.update-profile')}} "
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="name">Name</label>
+                                                    <input type="text" class="form-control" id="name"
+                                                        value="{{Auth::user()->name}}" placeholder="Enter name"
+                                                        name="name" data-validation="length"
+                                                        data-validation-length="3-400"
+                                                        data-validation-error-msg="Name is required (3-50 chars)">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="email" value="email@gmail.com">
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="email">Email address</label>
+                                                    <input type="email" class="form-control" id="email"
+                                                        value="{{Auth::user()->email}}"
+                                                        placeholder="Enter email address" data-validation="email"
+                                                        name="email">
+                                                </div>
+                                                {{-- <p id="emailExists" style="color: red; display: none">Email Already Exists In Our Database</p> --}}
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Company</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="">
+
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="phone">Phone Number</label>
+                                                    <input type="number" class="form-control" id="phone"
+                                                        value="{{Auth::user()->phone}}" placeholder="Enter Phone Number"
+                                                        name="phone">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Website</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="url" value="">
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="address">Address</label>
+                                                    <input type="text" class="form-control" id="address"
+                                                        value="{{Auth::user()->address}}" placeholder="Enter Address"
+                                                        name="address">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="" placeholder="Street">
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="username">Username</label>
+                                                    <input type="text" class="form-control" id="username"
+                                                        value="{{Auth::user()->username}}" placeholder="Enter username"
+                                                        name="username">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                                            <div class="col-lg-6">
-                                                <input class="form-control" type="text" value="" placeholder="City">
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" class="form-control" id="password"
+                                                        value="password" placeholder="Enter password "
+                                                        data-validation="password" name="password">
+                                                </div>
                                             </div>
-                                            <div class="col-lg-3">
-                                                <input class="form-control" type="text" value="" placeholder="State">
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="password-confirm">Confirm Password</label>
+                                                    <input id="password-confirm" name="password_confirmation"
+                                                        class="form-control" type="password" value="password">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Time Zone</label>
-                                            <div class="col-lg-9">
-                                                <select id="user_time_zone" class="form-control" size="0">
-                                                    <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                                                    <option value="Alaska">(GMT-09:00) Alaska</option>
-                                                    <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific
-                                                        Time
-                                                        (US
-                                                        &amp; Canada)</option>
-                                                    <option value="Arizona">(GMT-07:00) Arizona</option>
-                                                    <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain
-                                                        Time
-                                                        (US &amp; Canada)</option>
-                                                    <option value="Central Time (US &amp; Canada)" selected="selected">
-                                                        (GMT-06:00) Central Time (US &amp; Canada)</option>
-                                                    <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern
-                                                        Time
-                                                        (US
-                                                        &amp; Canada)</option>
-                                                    <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                                                </select>
+
+
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="image">Image</label>
+                                                    <input type="hidden" name="current_image">
+                                                    <input type="file" class="form-control" id="image" name="image"
+                                                        data-validation="mime size" data-validation-allowing="jpg, png"
+                                                        data-validation-max-size="1024kb"
+                                                        data-validation-error-msg-required="Please Upload User Image">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="janeuser">
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <button onclick="checkUserEmail()" type="submit"
+                                                        class="btn btn-primary">Update
+                                                        User</button>
+
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="password" value="11111122333">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Confirm
-                                                password</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="password" value="11111122333">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                                            <div class="col-lg-9">
-                                                <input type="reset" class="btn btn-secondary" value="Cancel">
-                                                <input type="button" class="btn btn-primary" value="Save Changes">
-                                            </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 order-lg-1 text-center">
-                            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-                            <h6 class="mt-2">Upload a different photo</h6>
-                            <label class="custom-file">
-                                <input type="file" id="file" class="custom-file-input">
-                                <span class="custom-file-control">Choose file</span>
-                            </label>
+                            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar"
+                                style="position:fixed;">
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @endsection
+</div>
+
+
+@endsection
