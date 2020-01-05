@@ -146,8 +146,9 @@ class UserController extends Controller
             'phone' => $request->phone,
             'username' => $request->username,
             'password' => $request->password
+
         ]);
-        dd($request->image);
+        // dd($request->image);
 
         Session()->flash('success' , 'User updated successfully');
 
