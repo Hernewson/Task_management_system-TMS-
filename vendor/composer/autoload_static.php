@@ -442,6 +442,7 @@ class ComposerStaticInitadb94b49b49822c4ae9c0116a899c9d9
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Todo' => __DIR__ . '/../..' . '/app/Todo.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\departments' => __DIR__ . '/../..' . '/app/departments.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
         'Carbon\\CarbonInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterface.php',

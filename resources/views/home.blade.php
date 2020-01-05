@@ -263,6 +263,10 @@ You are logged in!
 @else
 
 @section('content')
+@section('title')
+<title>GCN Computing Nepal | Homepage |</title>
+
+@endsection
 
 <div class="page-container">
 

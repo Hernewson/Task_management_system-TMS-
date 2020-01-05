@@ -14,8 +14,12 @@
                 <li class="sidebar-user-panel">
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="{{ asset('assets/img/dp.jpg') }}" class="img-circle user-img-circle"
-                                alt="User Image" />
+
+                            <img src="storage/{{Auth::user()->image}}" alt="Profile image"
+                                class="img-circle user-img-circle" style="height: 75px;
+                            width: 75px;
+                            object-fit: cover;">
+
                         </div>
                         <div class="pull-left info">
                             <p> <b> {{ Auth::user()->name }} </b></p>
@@ -33,30 +37,13 @@
                         <span class="selected"></span>
                         {{-- <span class="arrow open"></span> --}}
                     </a>
-                    {{-- <ul class="sub-menu">
-                            <li class="nav-item active">
-                                <a href="dashboard1.html" class="nav-link nav-toggle">
-                                    <span class="title">Dashboard 1</span>
-                                    <span class="selected"></span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a href="dashboard2.html" class="nav-link ">
-                                    <span class="title">Dashboard 2</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="dashboard3.html" class="nav-link ">
-                                    <span class="title">Dashboard 3</span>
-                                </a>
-                            </li>
-                        </ul> --}}
+
                 </li>
 
                 @endif
                 {{-- Task management starts here --}}
                 <li class="nav-item">
-                    <a href="/home" class="nav-link nav-toggle"> <i class="material-icons">event</i>
+                    <a href="/todos" class="nav-link nav-toggle"> <i class="material-icons">event</i>
                         <span class="title">Tasks </span><span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -83,7 +70,7 @@
 
                 {{-- Clients management starts here --}}
                 <li class="nav-item">
-                    <a href="/home" class="nav-link nav-toggle"> <i class="material-icons">person</i>
+                    <a href="/clients" class="nav-link nav-toggle"> <i class="material-icons">person</i>
                         <span class="title">Clients</span> <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -110,7 +97,7 @@
                 @if (auth()->user()->isAdmin())
                 {{-- Users management starts here --}}
                 <li class="nav-item">
-                    <a href="/home" class="nav-link nav-toggle"> <i class="material-icons">person</i>
+                    <a href="/view-users" class="nav-link nav-toggle"> <i class="material-icons">person</i>
                         <span class="title">Users</span> <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -134,6 +121,30 @@
                 {{-- Users management ends here --}}
                 @endif
 
+                {{-- Department management starts here --}}
+                <li class="nav-item">
+                    <a href="/departments.index" class="nav-link nav-toggle"> <i class="material-icons">person</i>
+                        <span class="title">Departments</span> <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="/departments" class="nav-link "> <span class="title">All
+                                    Departments</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/departments/create" class="nav-link "> <span class="title">Add
+                                    Department</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link "> <span class="title">Trashed
+                                    Departments</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- Department management ends here --}}
 
             </ul>
         </div>

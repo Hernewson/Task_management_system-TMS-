@@ -11,7 +11,7 @@
                 <div class="container">
 
                     <div class="row my-2">
-                        <div class="col-lg-8 order-lg-2">
+                        <div class=" col-lg-8 order-lg-2" style="margin-left:50px">
                             {{-- session message starts --}}
                             @if (session()->has('success'))
                             <div class="alert alert-success">
@@ -218,6 +218,7 @@
                                                         class="btn btn-primary">Update
                                                         User</button>
 
+
                                                 </div>
                                             </div>
                                         </form>
@@ -225,17 +226,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 order-lg-1 text-center">
-                            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar"
-                                style="position:fixed;">
+
+
+                        <div id='profile-upload' style="margin-top:60px">
+                            <img src="storage/{{Auth::user()->image}}" alt=""
+                                class="mx-auto img-fluid img-circle d-block"
+                                style=" width:250px; height:250px;   object-fit: cover; ">
 
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 @endsection

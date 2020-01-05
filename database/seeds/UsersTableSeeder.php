@@ -20,7 +20,11 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Niranjan Shrestha',
                 'email' => 'hernewson8@gmail.com',
                 'role' => 'admin',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'image'=> 'users/admin/dp.jpeg',
+                'username'=>'hernewson',
+                'phone'=>'9844228168',
+                'address' => 'Banglamukhi'
             ]);
         }
     }

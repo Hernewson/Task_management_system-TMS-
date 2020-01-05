@@ -13,13 +13,13 @@ class UserController extends Controller
     //Adding New Users
     public function addUser(Request $request)
     {
-        // $users = User::all();
+        $users = User::all();
         if ($request->isMethod('post')) {
-            // $emailCount = User::where('email', $request->email)->count();
+            $emailCount = User::where('email', $request->email)->count();
 
-            // if ($emailCount >= 1) {
-            //     return redirect()->back()->with('toast_error', 'Email Has Been Already Taken');
-            // }
+            if ($emailCount >= 1) {
+                return redirect()->back()->with('toast_error', 'Email Has Been Already Taken');
+            }
 
             $request->validate([
                 'name' => 'required',
@@ -27,12 +27,19 @@ class UserController extends Controller
                 'address' => 'required',
                 'phone' => 'required|Max:15',
                 'username' => 'required|unique:users',
-                'password' => ['required', 'string', 'min:8', 'confirmed']
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
             ]);
 
             $data = $request->all();
             $users = new User;
             $users->name = $data['name'];
+
+
+            $users->image = $request->image->store('users');
+
+
             $users->email = strtolower($data['email']);
             $users->username = strtolower($data['username']);
             $users->address = $data['address'];
@@ -42,7 +49,7 @@ class UserController extends Controller
 
 
             $users->save();
-
+// dd($data);
 
             return redirect()->route('viewAllUsers');
         }
@@ -67,38 +74,45 @@ class UserController extends Controller
     public function editUser(Request $request, $id)
     {
         $users = User::findOrFail($id);
-        $users_email = $users->email;
+        // $users_email = $users->email;
         if ($request->isMethod('post')) {
 
             $request->validate([
                 'name' => 'required',
-                'email' => 'required',
+                // 'email' => 'required',
                 'address' => 'required',
                 'phone' => 'required|Max:15',
                 'username' => 'required',
-                'password' => ['required', 'string', 'min:8', 'confirmed']
-                // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
-            if ($users_email != $request->email) {
-                $count_email = User::where('email', $request->email)->count();
-                if ($count_email > 0) {
-                    return redirect()->back()->with('Email Has Been Already Taken');
-                }
-            }
+            // if ($users_email != $request->email) {
+            //     $count_email = User::where('email', $request->email)->count();
+            //     if ($count_email > 0) {
+            //         return redirect()->back()->with('Email Has Been Already Taken');
+            //     }
+            // }
 
             $data = $request->all();
             $users->name = $data['name'];
-            $users->email = strtolower($data['email']);
+
+
+            $users->image = $request->image->store('users');
+
+
+            // $users->email = strtolower($data['email']);
+            $users->username = strtolower($data['username']);
             $users->address = $data['address'];
             $users->phone = $data['phone'];
-            $users->username = strtolower($data['username']);
             $users->password = Hash::make($data['password']);
-            $users->save();
 
+
+
+            $users->save();
 
             return redirect()->route('viewAllUsers');
         }
-        return view('users.edit', compact('users', 'users_email'));
+        return view('users.edit', compact('users'));
     }
 
     // Delete User
@@ -118,23 +132,28 @@ class UserController extends Controller
             'address' => 'required',
             'phone' => 'required|Max:15',
             'username' => 'required',
-            'password' => ['required', 'string', 'min:8', 'confirmed']
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
         ]);
+
 
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
+            'image' => $request->image->store('users'),
             'address' => $request->address,
             'phone' => $request->phone,
             'username' => $request->username,
             'password' => $request->password
-
         ]);
+        dd($request->image);
 
         Session()->flash('success' , 'User updated successfully');
 
         return \redirect()->back();
     }
+
+
 
 }

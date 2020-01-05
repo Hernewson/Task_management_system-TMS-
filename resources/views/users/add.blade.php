@@ -1,6 +1,6 @@
 @extends('vendor/main')
 @section('title')
-<title>Todo management system |Add User|</title>
+<title>User management system |Add User|</title>
 @endsection
 
 @section('content')
@@ -72,6 +72,14 @@
                                             data-validation-error-msg="Name is required (3-50 chars)">
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" id="username" value="username"
+                                            placeholder="Enter username" name="username">
+                                    </div>
+                                </div>
+
 
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -90,6 +98,13 @@
                                     </div>
 
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="password-confirm">Confirm Password</label>
+                                        <input id="password-confirm" name="password_confirmation" class="form-control"
+                                            type="password" value="password">
+                                    </div>
+                                </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -107,16 +122,16 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="role_id">Assign Department</label>
-                                                <select name="role_id" id="role_id" class="form-control" data-validation="required"
-                                                        data-validation-error-msg="Select User Role">
-                                                    <option selected disabled="">Select Department</option>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="role_id">Assign Department</label>
+                                        <select name="role_id" id="role_id" class="form-control"
+                                            data-validation="required" data-validation-error-msg="Select User Role">
+                                            <option selected disabled="">Select Department</option>
 
-                                                </select>
-                                            </div>
-                                        </div> --}}
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">

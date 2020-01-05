@@ -17,6 +17,10 @@ use App\Http\Controllers\UserController;
 
 Route::resource('clients', 'ClientsController');
 
+
+// Departments controller starts from here
+Route::resource('departments', 'DepartmentsController');
+
 //  Clients controller starts from here
 
 
@@ -63,6 +67,7 @@ Route::get('delete-user/{id}', 'UserController@deleteUser')->name('deleteUser');
 //User Profile Route
 Route::match(['get','post'],'/view-profile', 'UserController@viewProfile')->name('viewProfile');
 Route::put('/view-profile', 'UserController@update')->name('users.update-profile');
+
 
 
 Auth::routes();
