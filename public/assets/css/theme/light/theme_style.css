@@ -4340,6 +4340,7 @@ ul.chat.nice-chat {
     max-width: 112px;
 }
 .doctor-profile {
+    height: 360px;
     float: left;
     width: 100%;
     text-align: center;

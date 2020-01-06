@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\User;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
@@ -49,7 +50,7 @@ class UserController extends Controller
 
 
             $users->save();
-// dd($data);
+            // dd($data);
 
             return redirect()->route('viewAllUsers');
         }
@@ -124,6 +125,7 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
+        $id = $request->id;
         $user = auth()->user();
 
         $request->validate([
@@ -133,7 +135,7 @@ class UserController extends Controller
             'phone' => 'required|Max:15',
             'username' => 'required',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
 
         ]);
 
@@ -150,11 +152,16 @@ class UserController extends Controller
         ]);
         // dd($request->image);
 
-        Session()->flash('success' , 'User updated successfully');
+        // $file   = $request->file("image");
+        // if ($request->hasfile("image")) {
+        //     $file->move("public/storage/users", $file->getClientOriginalName());
+        //     $update['image'] = $file->getClientOriginalName();
+        //     DB::table('users')->where('id', $id)->update($update);
+        // }
+
+
+        Session()->flash('success', 'User updated successfully');
 
         return \redirect()->back();
     }
-
-
-
 }
