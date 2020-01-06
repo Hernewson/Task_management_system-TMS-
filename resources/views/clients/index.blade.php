@@ -119,7 +119,7 @@
                                                             <tr>
                                                                 <th></th>
                                                                 <th> Name </th>
-                                                                <th> email </th>
+                                                                <th> Email </th>
                                                                 <th> Phone number </th>
                                                                 <th> Company name </th>
                                                                 <th> Address </th>

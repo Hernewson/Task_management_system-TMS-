@@ -11,7 +11,7 @@
 
         <div class="page-content">
             <div class="page-bar">
-               
+
                 <div class="page-title-breadcrumb">
                     <div class=" pull-left">
                         {{-- <div class="page-title">User No. {{$user->id}}</div> --}}
@@ -37,20 +37,23 @@
                     {{session()->get('complete')}}
                 </div>
                 @endif
-    
+
                 @if (session()->has('delete'))
                 <div class="alert alert-danger">
                     {{session()->get('delete')}}
                 </div>
                 @endif
-    
+
                 @if (session()->has('update'))
                 <div class="alert alert-info">
                     {{session()->get('update')}}
                 </div>
                 @endif
                 {{-- session message ends --}}</div>
+
+
             <div class="col-md-12">
+                <div class="tabbable-line">
                 <ul class="nav customtab nav-tabs" href="/departments.index#tab1" ole="tablist">
                     <li class="nav-item"><a onclick="switch_div(1)" class="nav-link  active"
                             data-toggle="tab">List
@@ -58,9 +61,9 @@
                     <li class="nav-item"><a onclick="switch_div(2)" class="nav-link " data-toggle="tab">Grid
                             View</a></li>
                 </ul>
-               
+
                 <div class="card card-topline-purple">
-                  
+
 
                     <div class="card-head">
                         <header>All Department List</header>

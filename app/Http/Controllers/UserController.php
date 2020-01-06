@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\User;
 use Storage;
 use Illuminate\Support\Facades\Input;
@@ -50,7 +51,7 @@ class UserController extends Controller
 
 
             $users->save();
-// dd($data);
+            // dd($data);
 
             return redirect()->route('viewAllUsers');
         }
@@ -125,6 +126,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $users)
     {
+        $id = $request->id;
         $user = auth()->user();
 
 
@@ -139,53 +141,46 @@ class UserController extends Controller
 
         ]);
 
-            if($request->hasfile('image')){
-            $oldImage= $user->image;
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'image' => $request->image->store('users'),
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'username' => $request->username,
-            'password' => $request->password
+        if ($request->hasfile('image')) {
+            $oldImage = $user->image;
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'image' => $request->image->store('users'),
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'username' => $request->username,
+                'password' => $request->password
 
-        ]);
-        Storage::delete($oldImage);
-
-            }
-            else{
+            ]);
+            Storage::delete($oldImage);
+        } else {
 
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'username' => $request->username,
-            'password' => $request->password
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'username' => $request->username,
+                'password' => $request->password
 
-        ]);
-            }
+            ]);
+        }
 
 
-        // $data = $request->only('name', 'email', 'address', 'phone', 'username', 'password');
 
-        // if($request->hasFile('image')){
-        //     $image=$request->image->store('users');
-        //     Storage::delete($users->image);
-        //     $data['image'] = $image;
+
+        // $file   = $request->file("image");
+        // if ($request->hasfile("image")) {
+        //     $file->move("public/storage/users", $file->getClientOriginalName());
+        //     $update['image'] = $file->getClientOriginalName();
+        //     DB::table('users')->where('id', $id)->update($update);
         // }
 
-        // $users->update($data);
 
-
-
-        Session()->flash('success' , 'User updated successfully');
+        Session()->flash('success', 'User updated successfully');
 
         return \redirect()->back();
     }
-
-
-
 }

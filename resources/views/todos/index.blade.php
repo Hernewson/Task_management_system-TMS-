@@ -108,6 +108,7 @@
                                             <th>Tasks</th>
                                             <th style="text-align:center;">Assigned to</th>
                                             <th style="text-align:center;">Lead by</th>
+                                            <th style="text-align:center;">Date Assigned</th>
                                             <th style="text-align:center;"> Actions </th>
                                         </tr>
                                     </thead>
@@ -131,6 +132,9 @@
                                             </td>
                                             <td></td>
                                             <td></td>
+                                            <td>
+                                                 <a href="/todos/{{ $todo->id }}">{{ $todo -> created_at }}</a>
+                                            </td>
 
                                             <td>
                                                 <a href="/todos/{{ $todo->id }}/delete"
