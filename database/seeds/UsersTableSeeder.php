@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'hernewson8@gmail.com',
                 'role' => 'admin',
                 'password' => Hash::make('password'),
-                'image'=> 'users/admin/dp.jpeg',
+                'image'=> 'users/dp.jpg',
                 'username'=>'hernewson',
                 'phone'=>'9844228168',
                 'address' => 'Banglamukhi'
