@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\departments;
+use App\Department;
 
 class DepartmentsController extends Controller
 {
@@ -15,7 +15,7 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
-        return view('departments.index')->with('departments', departments::all());
+        return view('departments.index')->with('departments', Department::all());
     }
 
     /**
@@ -43,7 +43,7 @@ class DepartmentsController extends Controller
 
         $data = \request()->all();
 
-        $department = new Departments();
+        $department = new Department();
         $department -> name = $data['name'];
         $department -> description = $data['description'];
         $department -> save();
@@ -72,7 +72,8 @@ class DepartmentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $department = Department::find($id);
+        return \view('departments.edit', compact('department'));
     }
 
     /**
@@ -84,7 +85,19 @@ class DepartmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+           
+        ]);
+
+        $department = Department::find($id);
+            $department->name = $request->get('name');
+            $department->description = $request->get('description');
+          
+
+        $department->save();
+        return redirect('/departments')->with('update', 'Department Updated!');
     }
 
     /**
@@ -95,6 +108,9 @@ class DepartmentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $department = Department::find($id);
+        $department->delete();
+
+        return \redirect('/departments')->with('delete','Department is deleted');
     }
 }

@@ -11,30 +11,7 @@
 
         <div class="page-content">
             <div class="page-bar">
-                {{-- session message starts --}}
-                @if (session()->has('success'))
-                <div class="alert alert-success">
-                    {{session()->get('success')}}
-                </div>
-                @endif
-                @if (session()->has('complete'))
-                <div class="alert alert-success">
-                    {{session()->get('complete')}}
-                </div>
-                @endif
-
-                @if (session()->has('delete'))
-                <div class="alert alert-danger">
-                    {{session()->get('delete')}}
-                </div>
-                @endif
-
-                @if (session()->has('update'))
-                <div class="alert alert-info">
-                    {{session()->get('update')}}
-                </div>
-                @endif
-                {{-- session message ends --}}
+               
                 <div class="page-title-breadcrumb">
                     <div class=" pull-left">
                         {{-- <div class="page-title">User No. {{$user->id}}</div> --}}
@@ -49,8 +26,42 @@
         </div>
 
         <div class="row">
+            <div class="col-md-6-offset col-md-6"> {{-- session message starts --}}
+                @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{session()->get('success')}}
+                </div>
+                @endif
+                @if (session()->has('complete'))
+                <div class="alert alert-success">
+                    {{session()->get('complete')}}
+                </div>
+                @endif
+    
+                @if (session()->has('delete'))
+                <div class="alert alert-danger">
+                    {{session()->get('delete')}}
+                </div>
+                @endif
+    
+                @if (session()->has('update'))
+                <div class="alert alert-info">
+                    {{session()->get('update')}}
+                </div>
+                @endif
+                {{-- session message ends --}}</div>
             <div class="col-md-12">
+                <ul class="nav customtab nav-tabs" href="/departments.index#tab1" ole="tablist">
+                    <li class="nav-item"><a onclick="switch_div(1)" class="nav-link  active"
+                            data-toggle="tab">List
+                            View</a></li>
+                    <li class="nav-item"><a onclick="switch_div(2)" class="nav-link " data-toggle="tab">Grid
+                            View</a></li>
+                </ul>
+               
                 <div class="card card-topline-purple">
+                  
+
                     <div class="card-head">
                         <header>All Department List</header>
                         <div class="tools">
@@ -69,6 +80,31 @@
                                     </a>
                                 </div>
                             </div>
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="btn-group pull-right">
+                                    <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle"
+                                        data-toggle="dropdown">Tools
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <a href="javascript:;">
+                                                <i class="fa fa-print"></i> Print </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <i class="fa fa-file-pdf-o"></i> Save as
+                                                PDF </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <i class="fa fa-file-excel-o"></i>
+                                                Export to Excel </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="table-scrollable">
                             <table
@@ -93,16 +129,22 @@
                                             {{ $department->description }}
 
                                         </td>
-                                        <td style="float:right;">
-                                            {{-- <a href="{{ route('editdepartment', $user->id) }}"
-                                            class="btn btn-primary btn-xs">
-                                            <i class="fa fa-pencil"></i>
+                                        <td style="display:flex; padding-top: 24px;;"
+                                            class="center">
+                                            <a href=" {{route('departments.edit', $department->id)}} "
+                                                class="btn btn-primary btn-xs">
+                                                <i class="fa fa-pencil"></i>
                                             </a>
-
-                                            <a href="{{ route('deleteUser', $user->id) }}"
-                                                class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a> --}}
-
-
+                                            <form
+                                                action="{{route('departments.destroy',$department->id)}}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="btn btn-danger btn-xs">
+                                                    <i class="fa fa-trash-o "></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
