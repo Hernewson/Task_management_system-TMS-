@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\User;
+use Storage;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Hash;
@@ -123,10 +124,11 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function update(Request $request)
+    public function update(Request $request, User $users)
     {
         $id = $request->id;
         $user = auth()->user();
+
 
         $request->validate([
             'name' => 'required',
@@ -135,22 +137,49 @@ class UserController extends Controller
             'phone' => 'required|Max:15',
             'username' => 'required',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
 
         ]);
 
+        if ($request->hasfile('image')) {
+            $oldImage = $user->image;
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'image' => $request->image->store('users'),
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'username' => $request->username,
+                'password' => $request->password
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'image' => $request->image->store('users'),
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'username' => $request->username,
-            'password' => $request->password
+            ]);
+            Storage::delete($oldImage);
+        } else {
 
-        ]);
-        // dd($request->image);
+
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'username' => $request->username,
+                'password' => $request->password
+
+            ]);
+        }
+
+
+        // $data = $request->only('name', 'email', 'address', 'phone', 'username', 'password');
+
+        // if($request->hasFile('image')){
+        //     $image=$request->image->store('users');
+        //     Storage::delete($users->image);
+        //     $data['image'] = $image;
+        // }
+
+        // $users->update($data);
+
+
 
         // $file   = $request->file("image");
         // if ($request->hasfile("image")) {

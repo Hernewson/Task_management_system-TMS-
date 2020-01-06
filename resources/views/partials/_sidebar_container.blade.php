@@ -123,7 +123,7 @@
 
                 {{-- Department management starts here --}}
                 <li class="nav-item">
-                    <a href="/departments.index" class="nav-link nav-toggle"> <i class="material-icons">person</i>
+                    <a href="/departments" class="nav-link nav-toggle"> <i class="material-icons">person</i>
                         <span class="title">Departments</span> <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
