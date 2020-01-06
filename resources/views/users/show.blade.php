@@ -115,16 +115,18 @@
                                             {{ $user->role }}
 
                                         </td>
-                                        <td style="float:right;">
+                                        <td style="float:right; width:122px;">
                                             @if (!$user->isAdmin())
-                                            <button class="btn btn-success btn-sm">Make admin</button>
+                                            <a style="float:right;" title="Make admin?" href="#" class="btn btn-info btn-xs">
+                                                <i class="fa fa-user-md"></i>
+                                            </a>
                                             @endif
-                                            <a href="{{ route('editUser', $user->id) }}" class="btn btn-primary btn-xs">
+                                            <a href="{{ route('editUser', $user->id) }}" title="Edit User" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
 
                                             <a href="{{ route('deleteUser', $user->id) }}"
-                                                class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                                class="btn btn-danger btn-xs" title="Delete User"><i class="fa fa-trash-o"></i></a>
 
 
                                         </td>
