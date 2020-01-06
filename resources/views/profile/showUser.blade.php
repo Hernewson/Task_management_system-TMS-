@@ -6,6 +6,7 @@
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="page-content">
+
             <div class="card-body ">
 
                 <div class="container">
@@ -36,6 +37,20 @@
                             </div>
                             @endif
                             {{-- session message ends --}}
+
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="list-group">
+                                    @foreach ($errors->all() as $error)
+                                    <li class="list-group-item">
+                                        {{$error}}
+                                    </li>
+
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+
                             <ul class="nav nav-tabs">
 
                                 <li class="nav-item">
@@ -113,20 +128,7 @@
                                 </div>
                                 <div class="tab-pane" id="edit">
                                     <div class="card-body " id="bar-parent">
-                                        @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul class="list-group">
-                                                @foreach ($errors->all() as $error)
-                                                <li class="list-group-item">
-                                                    {{$error}}
-                                                </li>
 
-                                                @endforeach
-                                            </ul>
-                                        </div>
-
-
-                                        @endif
                                         <form method="post" action=" {{route('users.update-profile')}} "
                                             enctype="multipart/form-data">
                                             @csrf
@@ -204,7 +206,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="image">Image</label>
-                                                    <input type="hidden" name="current_image">
+                                                    <input type="hidden" name="image">
                                                     <input type="file" class="form-control" id="image" name="image"
                                                         data-validation="mime size" data-validation-allowing="jpg, png"
                                                         data-validation-max-size="1024kb"
@@ -214,8 +216,7 @@
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <button onclick="checkUserEmail()" type="submit"
-                                                        class="btn btn-primary">Update
+                                                    <button type="submit" class="btn btn-primary">Update
                                                         User</button>
 
 
