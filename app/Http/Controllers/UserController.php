@@ -169,16 +169,6 @@ class UserController extends Controller
             }
 
 
-        // $data = $request->only('name', 'email', 'address', 'phone', 'username', 'password');
-
-        // if($request->hasFile('image')){
-        //     $image=$request->image->store('users');
-        //     Storage::delete($users->image);
-        //     $data['image'] = $image;
-        // }
-
-        // $users->update($data);
-
 
 
         Session()->flash('success' , 'User updated successfully');
