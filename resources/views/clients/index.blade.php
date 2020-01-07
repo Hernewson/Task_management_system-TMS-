@@ -145,12 +145,12 @@
                                                                 <td class="center">{{$client->city}}</td>
                                                                 <td style="display:flex; padding-top: 24px;;"
                                                                     class="center">
-                                                                    <a href=" {{route('clients.edit', $client->id)}} "
+                                                                    <a href=" {{route('clients.edit', $client->id)}} " title="Edit Clients"
                                                                         class="btn btn-primary btn-xs">
                                                                         <i class="fa fa-pencil"></i>
                                                                     </a>
                                                                     <form
-                                                                        action="{{route('clients.destroy',$client->id)}}"
+                                                                        action="{{route('clients.destroy',$client->id)}}" title="Delete Clients"
                                                                         method="POST">
                                                                         @csrf
                                                                         @method('DELETE')

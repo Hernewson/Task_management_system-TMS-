@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone');
             $table->string('address');
+            $table->integer('department_id');
             $table->timestamps();
         });
     }
